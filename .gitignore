@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment / secrets — NEVER commit these
+.env
+.env.*
+!.env.example
+
+# SQLite database + WAL/journal side-files (bot.db is pushed to GitHub
+# separately by services/dbSync.ts via the API, using GITHUB_TOKEN — it
+# should never be committed directly, that would defeat the purpose of
+# keeping it out of normal git history and PR diffs)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Local backup snapshots (modules/backup/service.ts) — contain full guild
+# config + ticket transcripts + application answers. Never belongs in git.
+backups/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# TypeScript build info
+*.tsbuildinfo
